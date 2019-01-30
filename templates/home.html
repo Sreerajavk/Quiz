@@ -238,14 +238,35 @@
               <div class="modal-content">
                 <div class="modal-header">
 
-                  <h4 class="modal-title" style="float:left;">Updated Successfully <i class="fas fa-check" style="color: #0f0"></i></h4>
+                  <h4 class="modal-title" style="float:left;">Are you sure want to submit</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-success btn-lg" style="float: left;" onclick="window.location.href = '/home/student_data_entry'">Submit another response</button>
+                    <button type="button" class="btn btn-success btn-lg" style="float: left; " id="Confirm_submit">Submit</button>
                      <button type="button" class="btn btn-default btn-lg"  data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+         </div>
+
+          <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h4 class="modal-title" style="float:left;">Oops  timeout</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-success btn-lg" style="float: left; " onclick="window.location.href = '/login'">Return to login</button>
+                     <button type="button" class="btn btn-default btn-lg" onclick="window.location.href = '/login'" data-dismiss="modal">Close</button>
                 </div>
               </div>
 
@@ -263,59 +284,11 @@
           <script src="http://code.jquery.com/jquery.min.js"></script>
 
 
-{#            <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>#}
-{#  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>#}
+            <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-       <script>
 
-           function getTimeRemaining(endtime) {
-  var t = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor((t / 1000) % 60);
-  var minutes = Math.floor((t / 1000 / 60) % 60);
-  //var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-  //var days = Math.floor(t / (1000 * 60 * 60 * 24));
-  return {
-    'total': t,
-   // 'days': days,
-   // 'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
-  };
-}
-
-function initializeClock(id, endtime) {
-  var clock = document.getElementById(id);
-  //var daysSpan = clock.querySelector('.days');
-  //var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
-
-  function updateClock() {
-    var t = getTimeRemaining(endtime);
-
-    //daysSpan.innerHTML = t.days;
-    //hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-    if (t.total < 0) {
-      clearInterval(timeinterval);
-         minutesSpan.innerHTML = ('00');
-        secondsSpan.innerHTML = ('00');
-
-    }
-  }
-
-  updateClock();
-  var timeinterval = setInterval(updateClock, 1000);
-}
-
-var deadline = new Date(Date.parse(new Date()) + 60 *   1000);
-initializeClock('clockdiv', deadline);
-
-
-       </script>
 
 
 

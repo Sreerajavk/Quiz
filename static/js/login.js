@@ -93,17 +93,21 @@ $('#login_form').on('submit',function(event){
     })
     .done(function(response){
         // request successfull
-      //  $('#loader_img').css('opacity' , '0');
+        $('#loader_img1').css('opacity' , '0');
         if ( response.status == '200'){
             // redirect to home page
             //print('sdfjhsfi')
             window.location = "/home";
         }
 
-        else{
+        else if( response.status == '400'){
             alert("Incorrect Password");
             $('#loader_img1').css('opacity' , '0');
         // show_warning(response.text);
+        }
+
+        else{
+            alert("Already completed exam");
         }
 
 

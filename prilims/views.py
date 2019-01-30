@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -10,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from prilims.models import Questions , ScoreCard
 
 @csrf_exempt
-
+@login_required
 def home(request):
 
 
@@ -25,7 +26,7 @@ def home(request):
 
         while count<=2:
 
-            random_num = randint(1,3)
+            random_num = randint(1,4)
             print(random_num)
             if random_num not in random_list:
 
@@ -65,6 +66,15 @@ def login_fn ( request ):
         print(username)
         print(password)
 
+        done_users = ScoreCard.objects.all()
+        done_usernames = [str(x.username) for x in list(done_users)]
+
+        print(done_usernames)
+
+        if username in done_usernames:
+            print('sdfdfwerwer')
+            return JsonResponse({'status': '300'})
+
         u = authenticate( username = username , password = password )
         if u:
 
@@ -92,6 +102,10 @@ def validate_username(request):
     username = request.GET.get('username')
     all_users = User.objects.all()
     usernames = [str(x.username) for x in list(all_users)]
+
+
+
+
 
 
     if username in usernames:
@@ -128,5 +142,8 @@ def score_calculate(request):
     u.save()
 
 
-    print(score)
+    print('=tttt')
+
+    logout(request)
+    return JsonResponse({'status': '200'})
 
