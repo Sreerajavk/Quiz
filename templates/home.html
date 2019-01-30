@@ -1,0 +1,323 @@
+
+
+{% extends 'header.html' %}
+
+{% block head-content %}
+    <style>
+          #username_spin{
+
+              float: right;
+              color: #00f;
+              margin-top: -35px;
+              margin-right: 15px;
+
+
+
+
+        }
+
+                .loader {
+              position: relative;
+              margin: 0 auto;
+              width: 100px;
+            }
+            .loader:before {
+              content: "";
+              display: block;
+              padding-top: 100%;
+            }
+
+            .circular {
+              -webkit-animation: rotate 2s linear infinite;
+                      animation: rotate 2s linear infinite;
+              height: 100%;
+              -webkit-transform-origin: center center;
+                      transform-origin: center center;
+              width: 100%;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: auto;
+            }
+
+            .path {
+              stroke-dasharray: 1, 200;
+              stroke-dashoffset: 0;
+              -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+                      animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+              stroke-linecap: round;
+            }
+
+            @-webkit-keyframes rotate {
+              100% {
+                -webkit-transform: rotate(360deg);
+                        transform: rotate(360deg);
+              }
+            }
+
+            @keyframes rotate {
+              100% {
+                -webkit-transform: rotate(360deg);
+                        transform: rotate(360deg);
+              }
+            }
+            @-webkit-keyframes dash {
+              0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+              }
+              50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+              }
+              100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+              }
+            }
+            @keyframes dash {
+              0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+              }
+              50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+              }
+              100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+              }
+            }
+            @-webkit-keyframes color {
+              100%,
+              0% {
+                stroke: #d62d20;
+              }
+              40% {
+                stroke: #0057e7;
+              }
+              66% {
+                stroke: #008744;
+              }
+              80%,
+              90% {
+                stroke: #ffa700;
+              }
+            }
+            @keyframes color {
+              100%,
+              0% {
+                stroke: #d62d20;
+              }
+              40% {
+                stroke: #0057e7;
+              }
+              66% {
+                stroke: #008744;
+              }
+              80%,
+              90% {
+                stroke: #ffa700;
+              }
+            }
+            body {
+              background-color: #eee;
+            }
+
+            .showbox {
+              position: relative;
+              top: 300px;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              padding: 5%;
+            }
+
+    #clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 30px;
+       position: fixed;
+        top:300px;
+}
+
+#clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: #00BF96;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+	background: #00816A;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+
+    </style>
+
+
+
+{% endblock %}
+
+
+{% block body-content %}
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+      <div class="container">
+            <div class="row">
+
+                <div class="showbox" id="google_loader">
+                  <div class="loader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <div id="clockdiv" style="position: fixed;float: right;">
+
+          <div>
+            <span class="minutes"></span>
+            <div class="smalltext">Minutes</div>
+          </div>
+          <div>
+            <span class="seconds"></span>
+            <div class="smalltext">Seconds</div>
+          </div>
+        </div>
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-lg-offset-3" id="main_div">
+
+{#                     <div class="panel panel-success" style="margin-top: 2em">#}
+{#                          <div class="panel-heading" style="font-size: 1.5em;">Question 1</div>#}
+{#                          <div class="panel-body">#}
+{##}
+{#                                <p style="font-size: 1.3em;">sdfslkdfjsldkfjsdlkfjsd jsdlfkjsdfj sdf jsdfsdfsdfsdfsldfjsd sdfsjfwoeif sd  fsdfs d sd sdfsdfef d</p>#}
+{##}
+{#                              <label class="radio-inline"><input type="radio" name="optradio" checked> 1</label>#}
+{#                              <label class="radio-inline"><input type="radio" name="optradio">Optsdfsdfsdfsdfsdfasdfdion 2</label>#}
+{#                              <label class="radio-inline"><input type="radio" name="optradio">Option 3</label>#}
+{#                              <label class="radio-inline"><input type="radio" name="optradio">Option 3</label>#}
+{##}
+{##}
+{#                     </div>#}
+{##}
+{#                </div>#}
+
+
+            </div>
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-lg-offset-3" id="main_div">
+                     <button type="submit" class="btn btn-success btn-lg" id="submit_button" style="margin-bottom: 2em; opacity: 0; width: 10em;">Submit</button>
+                 </div>
+
+      </div>
+
+
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h4 class="modal-title" style="float:left;">Updated Successfully <i class="fas fa-check" style="color: #0f0"></i></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-success btn-lg" style="float: left;" onclick="window.location.href = '/home/student_data_entry'">Submit another response</button>
+                     <button type="button" class="btn btn-default btn-lg"  data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+         </div>
+
+          <body>
+
+
+
+            <script src="/static/js/home.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+{#        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+          <script src="http://code.jquery.com/jquery.min.js"></script>
+
+
+{#            <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>#}
+{#  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>#}
+
+
+       <script>
+
+           function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  //var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  //var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+   // 'days': days,
+   // 'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  //var daysSpan = clock.querySelector('.days');
+  //var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    //daysSpan.innerHTML = t.days;
+    //hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total < 0) {
+      clearInterval(timeinterval);
+         minutesSpan.innerHTML = ('00');
+        secondsSpan.innerHTML = ('00');
+
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var deadline = new Date(Date.parse(new Date()) + 60 *   1000);
+initializeClock('clockdiv', deadline);
+
+
+       </script>
+
+
+
+
+{% endblock %}

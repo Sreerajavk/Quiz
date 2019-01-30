@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <style>
+
+        #logo{
+        width:120px;
+    }
+    h2{
+        color:#fff;
+        padding-top: 20px;
+        font-size: 40px;
+    }
+    #herbarium{
+        color:#fff;
+        font-size: 30px;
+        font-family: "Times New Roman", Times, serif;
+    }
+    .panel-body h1 {
+        text-align: center;
+        font-size: 50px;
+        color: #000;
+    }
+    .panel-body h2 , .well h2{
+        color:#000;
+    }
+    .panel-heading button{
+        width: auto;
+        margin-left: 40%;
+    }
+
+    #herbarium{
+        color:#fff;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 25px;
+        margin-left: 100px;
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .media-heading{
+        margin-left: 50px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    #logo{
+        width:150px;
+        margin-left: 0px;
+    }
+    h2{
+        color:#fff;
+        padding-top: 20px;
+    }
+
+    .sidenav li{
+              font-size: 20px;
+          }
+      @media (max-width: 576px) {
+          h2{
+              font-size: 10px;
+              padding:0px;
+          }
+          #herbarium{
+        color:#fff;
+        font-size: 10px;
+        font-family: "Times New Roman", Times, serif;
+              margin-left: 20px;
+    }
+
+          #logo{
+              width: 70px;
+              margin-top: -10px;
+          }
+
+          .media-heading{
+        margin-left: 0px;
+        font-size:9px;
+    }
+          .sidenav h2{
+              font-size: 30px;
+          }
+          .sidenav li{
+              font-size: 20px;
+          }
+          .media{
+              margin-left: -20px;
+          }
+          .panel-body h1{
+              font-size: 20px;
+          }
+          .panel-heading button{
+        width: auto;
+        margin-left: 25%;
+         }
+
+      }
+    </style>
+
+    {% block head-content %}
+    {% endblock %}
+
+
+</head>
+<body>
+
+{#        <div class="jumbotron jumbotron-fluid">#}
+{#          <div class="container">#}
+{#            <h1>Bootstrap Tutorial</h1>#}
+{#            <p>Bootstrap is the most popular HTML, CSS...</p>#}
+{#          </div>#}
+{#        </div>#}
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color: #7b0000;margin-bottom: 20px;" >
+     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-10 col-lg-offset-1 " >
+        <div class="media" style="margin-top: 40px; margin-bottom: 10px;">
+            <div class="media-left media-middle">
+              <img src="/static/images/logo_white.png" class="media-object" id="logo" >
+            </div>
+            <div class="media-body">
+              <h2 class="media-heading" style="">GOVERNMENT ENGINEERING COLLEGE THRISSUR</h2>
+                <h2  id="herbarium" style="color:#fff">HERBARIUM - Collection of college magazines</h2>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        {% block body-content %}
+
+        {% endblock %}
+
+</body>
+</html>

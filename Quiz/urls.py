@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import  static
 from django.urls import path
+
+from Quiz import settings
+from prilims import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/' , views.login_fn ),
+    path('home/' , views.home ),
+    path('score_calculate/' , views.score_calculate),
+    path('login/validate_username/' , views.validate_username ),
 ]

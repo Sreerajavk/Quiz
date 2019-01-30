@@ -1,0 +1,70 @@
+
+
+{% extends 'header.html' %}
+
+{% block head-content %}
+    <style>
+          #username_spin{
+
+              float: right;
+              color: #00f;
+              margin-top: -35px;
+              margin-right: 15px;
+
+
+
+
+        }
+
+    </style>
+
+
+
+{% endblock %}
+
+
+{% block body-content %}
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+      <div class="container">
+            <div class="row">
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-lg-offset-3">
+
+                     <form id="login_form" type = "post">
+                     <div class="panel panel-success" style="margin-top: 2em">
+                          <div class="panel-heading" style="text-align: center;font-size: 2em;">Login form</div>
+                          <div class="panel-body">
+
+                              <div class="form-group">
+                            <label for="first_name">Username</label>
+                            <input type="text" class="form-control input-lg" id="username" name="username">
+                                  <i class="" aria-hidden="true" id="username_spin" ></i>
+                          </div>
+
+                           <div class="form-group">
+                            <label for="last_name">Password</label>
+                            <input type="password" class="form-control input-lg" id="password" name="password">
+                          </div>
+                              <button type="submit" class="btn btn-primary btn-lg" >Submit</button>
+                          </div>
+
+
+                     </div>
+                     </form>
+
+                </div>
+            </div>
+      </div>
+
+    <script src="/static/js/login.js"></script>
+
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+{% endblock %}
