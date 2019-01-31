@@ -15,6 +15,11 @@ from prilims.models import Questions , ScoreCard
 def home(request):
 
 
+    if request.user_agent.os.family == 'Android':
+
+        return JsonResponse("Mobile Version of site is not available")
+
+
     if request.method == 'POST':
 
 
@@ -57,6 +62,10 @@ def home(request):
 
 @csrf_exempt
 def login_fn ( request ):
+
+
+    if request.user_agent.os.family == 'Android':
+        return JsonResponse("Mobile Version of site is not available")
 
     if request.method == 'POST':
 
