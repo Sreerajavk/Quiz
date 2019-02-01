@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 
 from random import randint
@@ -17,7 +17,7 @@ def home(request):
 
     if request.user_agent.os.family == 'Android':
 
-        return JsonResponse("Mobile Version of site is not available")
+        return HttpResponse("Mobile Version of site is not available")
 
 
     if request.method == 'POST':
@@ -65,7 +65,7 @@ def login_fn ( request ):
 
 
     if request.user_agent.os.family == 'Android':
-        return JsonResponse("Mobile Version of site is not available")
+        return HttpResponse("Mobile Version of site is not available")
 
     if request.method == 'POST':
 
