@@ -21,6 +21,7 @@ from Quiz import settings
 from prilims import views
 
 urlpatterns = [
+    path('' , views.index) , 
     path('admin/', admin.site.urls),
     path('login/' , views.login_fn ),
     path('home/' , views.home ),
