@@ -10,6 +10,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 from prilims.models import Questions , ScoreCard
 
+
+def index(request):
+    return redirect('/home')
+
 @csrf_exempt
 @login_required
 def home(request):
