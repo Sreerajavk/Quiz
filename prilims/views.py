@@ -33,19 +33,25 @@ def home(request):
         count = 0
         details = []
 
+        obj_id = []
+        obj = Questions.objects.all()
+        c = obj.count()
+        for item in obj:
+            obj_id.append(item.id)
 
-        c = Questions.objects.all().count()
+        print(obj_id)
         print (c)
-        while count<5:
+        while count<4:
 
             random_num = randint(1,c)
             print(random_num)
             if random_num not in random_list:
 
                 try:
-                    obj = Questions.objects.get(id = random_num )
+                    print(count)
+                    obj = Questions.objects.get(id = obj_id[random_num-1] )
                     dic = {}
-                    dic['id'] = random_num
+                    dic['id'] = obj_id[random_num-1]
                     dic['question'] = obj.question
                     dic['choice1'] = obj.choice1
                     dic['choice2'] = obj.choice2
