@@ -33,9 +33,12 @@ def home(request):
         count = 0
         details = []
 
-        while count<=2:
 
-            random_num = randint(1,4)
+        c = Questions.objects.all().count()
+        print (c)
+        while count<5:
+
+            random_num = randint(1,c)
             print(random_num)
             if random_num not in random_list:
 
