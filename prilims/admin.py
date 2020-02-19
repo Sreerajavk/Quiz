@@ -29,3 +29,8 @@ class QuestioAdmain( admin.ModelAdmin ):
 
     list_display = ['question' , 'choice1', 'choice2' , 'choice3', 'choice4', 'correct_answer'  ]
 
+@admin.register(TimeStats)
+class TimeAdmin( admin.ModelAdmin ):
+
+    list_display = ['user' , 'time', 'status'   ]
+

@@ -9,17 +9,13 @@ $(document).ready(function () {
 
 function get_data() {
 
-
-    //alert("Sdfsdfsd");
-
-
     $.ajax({
         url : '/home/' ,
         type : 'post' ,
         dataType: 'json',
 
         success : function (response) {
-
+                alert(response.time)
                 $('#google_loader').css('opacity' ,  '0');
                 var i;
 
@@ -68,7 +64,7 @@ function get_data() {
 
                  $('#submit_button').css('opacity' , '1');
 
-                var deadline = new Date(Date.parse(new Date()) +  30 * 60 *   1000);
+                var deadline = new Date(Date.parse(new Date()) +  response.time);
                 initializeClock('clockdiv', deadline);
 
                 //var submit = $('<button type="submit" class="btn btn-success btn-lg" id="submit_button" style="margin-bottom: 2em;">Submit</button>');
@@ -78,8 +74,6 @@ function get_data() {
         } ,
 
         fail : function () {
-
-
             alert("eeee");
 
         } ,

@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -8,7 +10,7 @@ from random import randint
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
-from prilims.models import Questions , ScoreCard
+from prilims.models import Questions, ScoreCard, TimeStats
 
 
 def index(request):
@@ -17,18 +19,10 @@ def index(request):
 @csrf_exempt
 @login_required
 def home(request):
-
-
     if request.user_agent.os.family == 'Android':
-
         return HttpResponse("Mobile Version of site is not available")
 
-
     if request.method == 'POST':
-
-
-        print("sdfsdfsdfsfsdfsdfsd")
-
         random_list = []
         count = 0
         details = []
@@ -61,12 +55,29 @@ def home(request):
                     details.append(dic)
                     random_list.append(random_num)
                     count += 1
-                    print(dic)
+                    # print(dic)
 
                 except:
                     pass
 
-        return JsonResponse({ 'data' : details})
+        user_obj  = User.objects.get(username = request.user)
+
+        date_obj = TimeStats.objects.filter(user = user_obj)
+        if date_obj:
+            date_obj = date_obj.first()
+            print(date_obj.time)
+            print(datetime.datetime.now())
+            datetimeFormat = '%Y-%m-%d %H:%M:%S.%f'
+            # date1 = datetime.datetime.strftime(datetime.datetime.now() ,datetimeFormat)
+            # date2 = datetime.datetime.strftime(date_obj.time , datetimeFormat)
+            time = datetime.datetime.strptime(str(datetime.datetime.now()) ,datetimeFormat) \
+                   - datetime.datetime.strptime(str(date_obj.time).split('+')[0] , datetimeFormat)
+            time = 30 * 60 * 1000 - time.seconds
+        else:
+            date_obj = TimeStats.objects.create(user = user_obj , time = datetime.datetime.now(),status=True)
+            time = 30 * 60 * 1000
+        print(time)
+        return JsonResponse({ 'data' : details, 'time' : time})
 
 
 
@@ -94,7 +105,6 @@ def login_fn ( request ):
         print(done_usernames)
 
         if username in done_usernames:
-            print('sdfdfwerwer')
             return JsonResponse({'status': '300'})
 
         u = authenticate( username = username , password = password )
@@ -103,8 +113,6 @@ def login_fn ( request ):
             login( request , u)
             return JsonResponse({'status': '200'})
         else:
-
-            print("s=invalid")
             return JsonResponse({'status': '400'})
 
     else:
@@ -155,17 +163,12 @@ def score_calculate(request):
                 print(l[1] , obj.correct_answer)
                 score+=1
 
-
         except:
             pass
 
     userobj = User.objects.get(pk = request.user.id)
     u = ScoreCard.objects.create( username = userobj,score = score )
     u.save()
-
-
-    print('=tttt')
-
     logout(request)
     return JsonResponse({'status': '200'})
 

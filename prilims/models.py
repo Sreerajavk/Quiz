@@ -25,8 +25,9 @@ class ScoreCard ( models.Model ):
     score = models.IntegerField()
 
 
-# class Profile ( models.Model ):
-#
-#     username = models.OneToOneField( User , on_delete=models.CASCADE , )
+class TimeStats(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    time = models.DateTimeField()
+    status  = models.BooleanField(default=False)
 
 
