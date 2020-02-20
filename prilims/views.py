@@ -19,6 +19,7 @@ def index(request):
 @csrf_exempt
 @login_required
 def home(request):
+    total_questions = 10
     if request.user_agent.os.family == 'Android':
         return HttpResponse("Mobile Version of site is not available")
 
@@ -35,7 +36,7 @@ def home(request):
 
         print(obj_id)
         print (c)
-        while count<4:
+        while count<total_questions:
 
             random_num = randint(1,c)
             print(random_num)
@@ -60,24 +61,24 @@ def home(request):
                 except:
                     pass
 
-        user_obj  = User.objects.get(username = request.user)
-
-        date_obj = TimeStats.objects.filter(user = user_obj)
-        if date_obj:
-            date_obj = date_obj.first()
-            print(date_obj.time)
-            print(datetime.datetime.now())
-            datetimeFormat = '%Y-%m-%d %H:%M:%S.%f'
-            # date1 = datetime.datetime.strftime(datetime.datetime.now() ,datetimeFormat)
-            # date2 = datetime.datetime.strftime(date_obj.time , datetimeFormat)
-            time = datetime.datetime.strptime(str(datetime.datetime.now()) ,datetimeFormat) \
-                   - datetime.datetime.strptime(str(date_obj.time).split('+')[0] , datetimeFormat)
-            time = 30 * 60 * 1000 - time.seconds
-        else:
-            date_obj = TimeStats.objects.create(user = user_obj , time = datetime.datetime.now(),status=True)
-            time = 30 * 60 * 1000
-        print(time)
-        return JsonResponse({ 'data' : details, 'time' : time})
+        # user_obj  = User.objects.get(username = request.user)
+        #
+        # date_obj = TimeStats.objects.filter(user = user_obj)
+        # if date_obj:
+        #     date_obj = date_obj.first()
+        #     print(date_obj.time)
+        #     print(datetime.datetime.now())
+        #     datetimeFormat = '%Y-%m-%d %H:%M:%S.%f'
+        #     # date1 = datetime.datetime.strftime(datetime.datetime.now() ,datetimeFormat)
+        #     # date2 = datetime.datetime.strftime(date_obj.time , datetimeFormat)
+        #     time = datetime.datetime.strptime(str(datetime.datetime.now()) ,datetimeFormat) \
+        #            - datetime.datetime.strptime(str(date_obj.time).split('+')[0] , datetimeFormat)
+        #     time = 30 * 60 * 1000 - time.seconds
+        # else:
+        #     date_obj = TimeStats.objects.create(user = user_obj , time = datetime.datetime.now(),status=True)
+        #     time = 30 * 60 * 1000
+        # print(time)
+        return JsonResponse({ 'data' : details})
 
 
 
